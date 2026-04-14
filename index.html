@@ -2,42 +2,42 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Asteroids</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div id="contenedor-juego">
+  <div id="contenedorJuego">
     <h1 class="titulo">Asteroids</h1>
-    <div id="panel-info">
+    <div id="panelInfo">
       <span>Puntos: <strong id="marcador">0</strong></span>
       <span>Vidas: <strong id="vidas">3</strong></span>
       <span>Nivel: <strong id="nivel">1</strong></span>
     </div>
 
-    <canvas id="juego"></canvas>
+    <canvas id="areaJuego"></canvas>
 
-    <div id="pantalla-inicio" class="pantalla-superpuesta">
+    <div id="modalInicio" class="modal">
       <h2>BIENVENIDA A ASTEROIDS: Pink Edition</h2>
       <p>Destruye todos los asteroides y sobrevive</p>
-      <div class="controles-info">
+      <div class="controles">
         <h2>Controles</h2>
         <p>Flecha arriba: Impulso</p>
         <p>Flechas laterales: Girar</p>
         <p>Espacio: Disparar</p>
       </div>
-      <button id="boton-jugar" class="boton-rosa">Jugar</button>
+      <button id="botonjugar" class="botonrosa">Jugar</button>
     </div>
 
-    <div id="pantalla-game-over" class="pantalla-superpuesta oculto">
+    <div id="modalGameover" class="modal oculto">
       <h2>Game Over</h2>
-      <p>Puntuación final: <strong id="puntuacion-final">0</strong></p>
-      <button id="boton-reiniciar" class="boton-rosa">Intentar de nuevo</button>
+      <p>Puntuación final: <strong id="puntajeFinal">0</strong></p>
+      <button id="botonreiniciar" class="botonrosa">Intentar de nuevo</button>
     </div>
 
-    <div id="pantalla-nivel" class="pantalla-superpuesta oculto">
+    <div id="modalNivel" class="modal oculto">
       <h2>Nivel superado</h2>
-      <p id="texto-nivel-nuevo"></p>
+      <p id="textoNivelnuevo"></p>
     </div>
   </div>
 </body>

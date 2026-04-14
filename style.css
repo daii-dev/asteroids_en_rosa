@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1a0a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  color: #ffb6d9;
+}
+
+#contenedorJuego {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.titulo {
+  font-size: 2rem;
+  color: #ff69b4;
+  text-shadow: 0 0 10px #ff1493, 0 0 20px #ff69b4;
+  letter-spacing: 2px;
+}
+
+#panelInfo {
+  display: flex;
+  gap: 30px;
+  font-size: 1rem;
+  color: #ffb6d9;
+  background-color: rgba(255, 105, 180, 0.1);
+  padding: 8px 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 105, 180, 0.3);
+}
+
+#panelInfo strong {
+  color: #ff69b4;
+}
+
+#areaJuego {
+  border: 2px solid #ff69b4;
+  border-radius: 8px;
+  background-color: #0d001a;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+  display: block;
+}
+
+.modal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background-color: rgba(26, 0, 26, 0.92);
+  border: 2px solid #ff69b4;
+  border-radius: 16px;
+  padding: 40px 50px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(255, 20, 147, 0.5);
+  z-index: 10;
+}
+
+modal h2 {
+  font-size: 1.8rem;
+  color: #ff69b4;
+  text-shadow: 0 0 8px #ff1493;
+}
+
+.modal p {
+  font-size: 1rem;
+  color: #ffb6d9;
+}
+
+.controles {
+  background-color: rgba(255, 105, 180, 0.08);
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 105, 180, 0.2);
+}
+
+.controles p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+}
+
+.botonrosa {
+  background-color: #ff69b4;
+  color: #1a0a1a;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 1px;
+}
+
+.botonrosa:hover {
+  background-color: #ff1493;
+  box-shadow: 0 0 15px rgba(255, 20, 147, 0.6);
+  transform: scale(1.05);
+}
+
+.oculto {
+  display: none !important;
+}
