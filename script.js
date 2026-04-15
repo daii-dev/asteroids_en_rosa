@@ -21,6 +21,7 @@ areaJuego.height = ALTO_AREAJUEGO;
 
 const VELOCIDAD_ROTACION = 0.05; 
 const FUERZA_IMPULSO = 0.15; 
+const DESACELERACION = 0.99;
 const COLOR_NAVE = '#ff69b4';
 
 const VELOCIDAD_BALA = 7;     
@@ -114,6 +115,10 @@ function actualizarNave() {
     nave.velocidadX += Math.cos(nave.angulo) * FUERZA_IMPULSO;
     nave.velocidadY += Math.sin(nave.angulo) * FUERZA_IMPULSO;
   }
+
+  //desaceleracion
+  nave.velocidadX *= DESACELERACION;
+  nave.velocidadY *= DESACELERACION;
 
   //mover nave
   nave.x += nave.velocidadX;
