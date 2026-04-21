@@ -26,7 +26,10 @@ const VELOCIDAD_BALA           = 7;
 const VIDA_BALA                = 55;
 const TIEMPO_INVULNERABLE      = 150;
 const TAMAÑO_ASTEROIDE_GRANDE  = 45;
+const TAMAÑO_ASTEROIDE_PEQUEÑO  = 25;
 const CANTIDAD_ASTEROIDES_BASE = 3;
+const PUNTOS_GRANDE   = 20;
+const PUNTOS_PEQUEÑO  = 50;
 
 const COLOR_NAVE      = '#ff69b4';
 const COLOR_BALA      = '#ff1493';

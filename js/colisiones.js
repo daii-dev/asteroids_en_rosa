@@ -12,8 +12,7 @@ function verificarColisionBalaAsteroide() {
 
       if (distancia < asteroide.tamaño * 0.8) {
         listaBalas.splice(indiceBala, 1);
-        crearExplosion(asteroide.x, asteroide.y);
-        listaAsteroides.splice(indiceAst, 1);
+        partirAsteroide(asteroide, indiceAst);
         break;
       }
     }
