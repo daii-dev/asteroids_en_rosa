@@ -1,6 +1,7 @@
 function partirAsteroide(asteroide, indice) {
   listaAsteroides.splice(indice, 1);
 
+  sumarPuntajePorAsteroide(asteroide);
   crearExplosion(asteroide.x, asteroide.y);
 
   if (asteroide.tamaño >= TAMAÑO_ASTEROIDE_GRANDE) {
