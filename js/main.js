@@ -32,6 +32,7 @@ const COLOR_NAVE      = '#ff69b4';
 const COLOR_BALA      = '#ff1493';
 const COLOR_BORDE_AST = '#ff80ab';
 const COLOR_ESTRELLA  = 'rgba(255, 182, 217, 0.8)';
+const COLOR_EXPLOSION  = '#ff69b4';
 
 let puntaje         = 0;
 let vidasRestantes  = 3;
@@ -116,6 +117,7 @@ function bucleDelJuego() {
     actualizarNave();
     actualizarBalas();
     actualizarAsteroides();
+    actualizarExplosiones();
     verificarColisionBalaAsteroide();
     verificarColisionNaveAsteroide();
   }
@@ -123,6 +125,7 @@ function bucleDelJuego() {
   dibujarAsteroides();
   dibujarBalas();
   dibujarNave();
+  dibujarExplosiones();
 
   animacion = requestAnimationFrame(bucleDelJuego);
 }

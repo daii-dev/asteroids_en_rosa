@@ -12,6 +12,7 @@ function verificarColisionBalaAsteroide() {
 
       if (distancia < asteroide.tamaño * 0.8) {
         listaBalas.splice(indiceBala, 1);
+        crearExplosion(asteroide.x, asteroide.y);
         listaAsteroides.splice(indiceAst, 1);
         break;
       }
@@ -34,6 +35,7 @@ function verificarColisionNaveAsteroide() {
 
 function naveImpactada() {
   vidasRestantes--;
+  crearExplosion(nave.x, nave.y);
   actualizarHUD();
 
   if (vidasRestantes <= 0) {
