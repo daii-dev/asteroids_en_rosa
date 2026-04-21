@@ -1,4 +1,3 @@
-// ===== Referencias al DOM =====
 const areaJuego = document.getElementById('areaJuego');
 const contexto = areaJuego.getContext('2d');
 
@@ -15,43 +14,37 @@ const pantallaNivel    = document.getElementById('modalNivel');
 const botonJugar     = document.getElementById('botonjugar');
 const botonReiniciar = document.getElementById('botonreiniciar');
 
-// ===== Tamaño del Area Juego =====
 const ANCHO_AREAJUEGO  = 700;
 const ALTO_AREAJUEGO   = 500;
 areaJuego.width  = ANCHO_AREAJUEGO;
 areaJuego.height = ALTO_AREAJUEGO;
 
-// ===== Constantes del juego =====
 const VELOCIDAD_ROTACION       = 0.05;
 const FUERZA_IMPULSO           = 0.15;
 const DESACELERACION           = 0.99;
 const VELOCIDAD_BALA           = 7;
 const VIDA_BALA                = 55;
+const TIEMPO_INVULNERABLE      = 150;
 const TAMAÑO_ASTEROIDE_GRANDE  = 45;
 const CANTIDAD_ASTEROIDES_BASE = 3;
 
-// ===== Colores rosa para dibujar =====
 const COLOR_NAVE      = '#ff69b4';
 const COLOR_BALA      = '#ff1493';
 const COLOR_BORDE_AST = '#ff80ab';
 const COLOR_ESTRELLA  = 'rgba(255, 182, 217, 0.8)';
 
-// ===== Estado global del juego =====
 let puntaje         = 0;
 let vidasRestantes  = 3;
 let nivelActual     = 1;
 let juegoActivo     = false;
 let animacion       = null;
 
-// ===== Objeto nave =====
 let nave = {};
-
-// ===== Listas de objetos en pantalla =====
 let listaAsteroides = [];
 let listaBalas      = [];
+let listaExplosiones = [];
 let listaEstrellas  = [];
 
-// ===== Teclas presionadas =====
 const teclasPresionadas = {
   izquierda : false,
   derecha   : false,
@@ -61,9 +54,6 @@ const teclasPresionadas = {
 
 let puedeDisparar = true;
 
-// ============================================================
-//  INICIALIZACIÓN
-// ============================================================
 
 function inicializarJuego() {
   puntaje = 0;
@@ -76,6 +66,7 @@ function inicializarJuego() {
   generarAsteroides(CANTIDAD_ASTEROIDES_BASE);
 
   listaBalas = [];
+  listaExplosiones = [];
 }
 
 function crearEstrellasFondo() {
@@ -90,35 +81,6 @@ function crearEstrellasFondo() {
   }
 }
 
-// ============================================================
-//  COLISIONES
-// ============================================================
-
-function distanciaEntrePuntos(ax, ay, bx, by) {
-  return Math.sqrt((ax - bx) ** 2 + (ay - by) ** 2);
-}
-
-function verificarColisionBalaAsteroide() {
-  for (let indiceBala = listaBalas.length - 1; indiceBala >= 0; indiceBala--) {
-    const bala = listaBalas[indiceBala];
-
-    for (let indiceAst = listaAsteroides.length - 1; indiceAst >= 0; indiceAst--) {
-      const asteroide = listaAsteroides[indiceAst];
-      const distancia = distanciaEntrePuntos(bala.x, bala.y, asteroide.x, asteroide.y);
-
-      if (distancia < asteroide.tamaño * 0.8) {
-        listaBalas.splice(indiceBala, 1);
-        listaAsteroides.splice(indiceAst, 1);
-        break;
-      }
-    }
-  }
-}
-
-// ============================================================
-//  FONDO CON ESTRELLAS
-// ============================================================
-
 function dibujarFondo() {
   contexto.fillStyle = '#0d001a';
   contexto.fillRect(0, 0, ANCHO_AREAJUEGO, ALTO_AREAJUEGO);
@@ -131,9 +93,6 @@ function dibujarFondo() {
   }
 }
 
-// ============================================================
-//  HUD
-// ============================================================
 
 function actualizarHUD() {
   elementoMarcador.textContent = puntaje;
@@ -141,19 +100,14 @@ function actualizarHUD() {
   elementoNivel.textContent = nivelActual;
 }
 
-// ============================================================
-//  INICIO DEL JUEGO
-// ============================================================
 
 function comenzarJuego() {
   pantallaInicio.classList.add('oculto');
+  pantallaGameOver.classList.add('oculto');
   inicializarJuego();
   juegoActivo = true;
 }
 
-// ============================================================
-//  BUCLE PRINCIPAL
-// ============================================================
 
 function bucleDelJuego() {
   dibujarFondo();
@@ -163,6 +117,7 @@ function bucleDelJuego() {
     actualizarBalas();
     actualizarAsteroides();
     verificarColisionBalaAsteroide();
+    verificarColisionNaveAsteroide();
   }
 
   dibujarAsteroides();
@@ -172,9 +127,6 @@ function bucleDelJuego() {
   animacion = requestAnimationFrame(bucleDelJuego);
 }
 
-// ============================================================
-//  CONTROLES DEL TECLADO
-// ============================================================
 
 document.addEventListener('keydown', (evento) => {
   switch (evento.code) {
@@ -197,12 +149,9 @@ document.addEventListener('keyup', (evento) => {
   }
 });
 
-// ============================================================
-//  EVENTOS DE BOTONES
-// ============================================================
 
 botonJugar.addEventListener('click', comenzarJuego);
+botonReiniciar.addEventListener('click', comenzarJuego);
 
-// ===== Arrancar el bucle para mostrar fondo en inicio =====
 crearEstrellasFondo();
 bucleDelJuego();

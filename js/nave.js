@@ -31,6 +31,8 @@ function actualizarNave() {
   nave.x = ((nave.x % ANCHO_AREAJUEGO) + ANCHO_AREAJUEGO) % ANCHO_AREAJUEGO;
   nave.y = ((nave.y % ALTO_AREAJUEGO) + ALTO_AREAJUEGO) % ALTO_AREAJUEGO;
 
+  if (nave.frameInvulnerable > 0) nave.frameInvulnerable--;
+
   if (teclasPresionadas.disparar && puedeDisparar) {
     disparar();
     puedeDisparar = false;
@@ -43,7 +45,9 @@ function actualizarNave() {
 
 function dibujarNave() {
   if (nave.x === undefined || nave.y === undefined) return;
-
+  if (nave.frameInvulnerable > 0 && Math.floor(nave.frameInvulnerable / 5) % 2 === 0) {
+    return;
+  }
   contexto.save();
   contexto.translate(nave.x, nave.y);
   contexto.rotate(nave.angulo);
