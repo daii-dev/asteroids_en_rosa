@@ -5,5 +5,5 @@ function sumarPuntajePorAsteroide(asteroide) {
     puntaje += PUNTOS_PEQUEÑO;
   }
 
-  actualizarHUD();
+  actualizarBarraEstado();
 }

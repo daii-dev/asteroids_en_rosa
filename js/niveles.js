@@ -1,7 +1,7 @@
 function verificarNivelCompletado() {
   if (listaAsteroides.length === 0) {
     nivelActual++;
-    actualizarHUD();
+    actualizarBarraEstado();
     mostrarPantallaNivel();
   }
 }

@@ -35,7 +35,7 @@ function verificarColisionNaveAsteroide() {
 function naveImpactada() {
   vidasRestantes--;
   crearExplosion(nave.x, nave.y);
-  actualizarHUD();
+  actualizarBarraEstado();
 
   if (vidasRestantes <= 0) {
     juegoActivo = false;
