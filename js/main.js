@@ -123,6 +123,7 @@ function bucleDelJuego() {
     actualizarExplosiones();
     verificarColisionBalaAsteroide();
     verificarColisionNaveAsteroide();
+    verificarNivelCompletado();
   }
 
   dibujarAsteroides();
